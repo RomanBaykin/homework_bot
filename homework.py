@@ -100,7 +100,7 @@ def main():
     if not check_tokens():
         raise KeyError('Один или несколько токенов отсутствуют')
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
-    current_timestamp = int(time.time())
+    current_timestamp = int(time.time()) - 60 * 60 * 24 * 30
 
     compare_error = ''
     compare_message = ''
@@ -115,7 +115,7 @@ def main():
                 send_message(bot, message)
             else:
                 logger.debug('Новые статусы отсуствуют')
-            current_timestamp = response.get('current_date')
+            current_timestamp = int(time.time())
             time.sleep(RETRY_TIME)
 
         except Exception as error:
