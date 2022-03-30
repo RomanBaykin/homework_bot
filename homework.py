@@ -34,7 +34,7 @@ HOMEWORK_STATUSES = {
 
 
 def send_message(bot, message):
-    """Оправка сообщения """
+    """Оправка сообщения."""
     try:
         bot.send_message(TELEGRAM_CHAT_ID, message)
     except exceptions.MessageSendError as error:
@@ -43,7 +43,7 @@ def send_message(bot, message):
 
 
 def get_api_answer(current_timestamp):
-    """Получение ответа от API"""
+    """Получение ответа от API."""
     timestamp = current_timestamp or int(time.time())
     params = {'from_date': timestamp}
     response = requests.get(ENDPOINT, headers=HEADERS, params=params)
@@ -56,7 +56,7 @@ def get_api_answer(current_timestamp):
 
 
 def check_response(response):
-    """Проверка ответа от API"""
+    """Проверка ответа от API."""
     if not response['homeworks']:
         logger.error('Ответ API не содержит homeworks')
         raise KeyError('Ответ API не содержит homeworks')
@@ -67,7 +67,7 @@ def check_response(response):
 
 
 def parse_status(homework):
-    """Проверка статуса работы"""
+    """Проверка статуса работы."""
     if homework.get('homework_name') is None:
         logger.error('Ответ не содержит имя работы')
         raise KeyError('Ответ не содержит имя работы')
@@ -86,7 +86,7 @@ def parse_status(homework):
 
 
 def check_tokens():
-    """Проверка переменных доступа"""
+    """Проверка переменных доступа."""
     ENV_VARS = [PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID]
     for token in ENV_VARS:
         if not token:
