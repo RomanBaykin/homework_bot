@@ -82,10 +82,7 @@ def parse_status(homework):
 
 def check_tokens():
     """Проверка переменных доступа."""
-    if not all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID]):
-        logging.critical('Один или несколько токенов отсутствуют')
-        return False
-    return True
+    return all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID])
 
 
 def main():
