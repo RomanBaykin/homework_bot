@@ -102,7 +102,7 @@ def main():
             else:
                 logging.info('Новые статусы отсуствуют')
             current_timestamp = response.get('current_time')
-        except Exception as error:
+        except exceptions.UnknownError as error:
             message = f'Сбой в работе программы: {error}'
             send_message(bot, message)
         finally:
